@@ -16,19 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // $tasks = DB::table('tasks')->get(); before creating a model
-    //for an api return the below
-    // return $tasks;
+// Route::get('/', function () {
+//     // $tasks = DB::table('tasks')->get(); before creating a model
+//     //for an api return the below
+//     // return $tasks;
 
-    $tasks = Task::all();
-    return view('welcome', compact('tasks'));
-});
+//     $tasks = Task::all();
+//     return view('welcome', compact('tasks'));
+// });
 
-Route::get('task/{task}', function($id){
+
+// Route::get('task/{task}', function($id){
     
-    $task = Task::find($id);
-    // dd($id);
+//     $task = Task::find($id);
+//     // dd($id);
 
-    return view('singleTask', compact('task'));
-});
+//     return view('singleTask', compact('task'));
+// });
+
+Route::get('/', [App\Http\Controllers\TasksController::class, 'index']);
+Route::get('task/{task}', [App\Http\Controllers\TasksController::class, 'show']);
+
