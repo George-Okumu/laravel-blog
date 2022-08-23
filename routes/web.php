@@ -34,6 +34,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('singleTask', compact('task'));
 // });
 
-Route::get('/', [App\Http\Controllers\TasksController::class, 'index']);
-Route::get('task/{task}', [App\Http\Controllers\TasksController::class, 'show']);
 
+// Route::get('task/{task}', [App\Http\Controllers\TasksController::class, 'show']);
+Route::get('/', [App\Http\Controllers\TasksController::class, 'index']);
+Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
+Route::get('create', [App\Http\Controllers\PostsController::class, 'create']);
+Route::post('/posts', [App\Http\Controllers\PostsController::class, 'store']);
+Route::get('post/{post}', [App\Http\Controllers\PostsController::class, 'show']);
