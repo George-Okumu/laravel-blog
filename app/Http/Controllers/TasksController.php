@@ -11,7 +11,7 @@ class TasksController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return view('welcome', compact('tasks'));
+        return view('tasks/allTasks', compact('tasks'));
     }
 
     public function show(Task $task)
@@ -22,6 +22,6 @@ class TasksController extends Controller
         // $task = Task::findorFail($id);
         // dd($id);
 
-        return view('singleTask', compact('task'));
+        return view('tasks/singleTask', compact('task'));
     }
 }
