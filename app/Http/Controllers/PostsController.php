@@ -15,7 +15,7 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         return view("posts/allposts", compact("posts"));
     }
 
@@ -27,6 +27,7 @@ class PostsController extends Controller
     public function create()
     {
         //
+
         return view("posts/create");
     }
 
@@ -42,10 +43,10 @@ class PostsController extends Controller
         $validated = $request->validate([
             "title" => "required|unique:posts|max:255",
             "description" => "required",
-            "content" => "required|unique:posts|max:500"
+            "content" => "required|unique:posts|min:5"
         ]);
 
-        dd($validated);
+        // dd($validated);
         
         Post::create($validated);
 

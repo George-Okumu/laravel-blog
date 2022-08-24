@@ -5,7 +5,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
                 <form method="POST" action="/posts">
-                    @CSRF                    
+                    @CSRF
                     <div class="mb-4">
                         <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
                         <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="{{ old('title') }}" required>
@@ -18,9 +18,9 @@
 
                     <div class="mb-8">
                         <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
-                        <textarea name="content" value="{{ old('content') }} class=" border-2 border-gray-500">
+                        <textarea name="content" value="{{ old('content') }}" class="border-2 border-gray-500">
 
-                            </textarea>
+                        </textarea>
                     </div>
                     @include ("Layouts/formerrors")
 

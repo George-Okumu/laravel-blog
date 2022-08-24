@@ -12,4 +12,8 @@ class Post extends Model
     // protected $fillable = ["title", "description", "content"]; # Passes fields only you allow.
 
     protected $guarded = []; # this does not prevent mass assignment
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

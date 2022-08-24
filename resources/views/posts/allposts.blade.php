@@ -1,5 +1,7 @@
 @extends ('Layouts.layout')
 
+<!-- #https://carbon.nesbot.com/docs/#api-formatting -->
+
 @section ('content')
 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
     @if (Route::has('login'))
@@ -28,14 +30,16 @@
         <div class="bg-cyan-500 shadow-lg rounded-lg shadow-cyan-500/50 m-4">
             <h2 class="text-center text-white pt-4 font-extrabold">All Posts</h2>
             @foreach($posts as $post)
-                <ul class="p-2 mx-4 group relative m-4 hover:bg-blue-700 hover:text-white">
-                    <a class="" href="/post/{{$post->id}}">
-                        <li>{{$post ->title}}</li>
-                        <span class="absolute hidden group-hover:flex -top-2 -right-3 translate-x-full w-48 px-2 py-1 bg-blue-700 rounded-lg text-center text-white text-sm before:content-[''] before:absolute before:top-1/2  before:right-[100%] before:-translate-y-1/2 before:border-8 before:border-y-transparent before:border-l-transparent before:border-r-blue-700">click to view Details</span>
-                    </a>
-                </ul>
+            <ul class="p-2 mx-4 group relative m-4 hover:bg-blue-700 hover:text-white">
+                <a class="" href="/post/{{$post->id}}">
+                    <li>{{$post ->title}} <span class="float-right font-bold text-white pt-2 mx-2">Posted on: {{$post ->created_at->toFormattedDateString()}}</span>
+                    </li>
+                    <span class="absolute hidden group-hover:flex -top-2 -right-3 translate-x-full w-48 px-2 py-1 bg-blue-700 rounded-lg text-center text-white text-sm before:content-[''] before:absolute before:top-1/2  before:right-[100%] before:-translate-y-1/2 before:border-8 before:border-y-transparent before:border-l-transparent before:border-r-blue-700">click to view Details</span>
+                </a>
+            </ul>
             @endforeach
         </div>
+        
     </div>
 </div>
 @endsection
