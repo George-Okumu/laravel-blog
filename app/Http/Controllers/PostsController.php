@@ -38,11 +38,16 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create([
-            "title" => $request-> title,
-            "description" => $request-> description,
-            "content" => $request-> content
+
+        $validated = $request->validate([
+            "title" => "required|unique:posts|max:255",
+            "description" => "required",
+            "content" => "required|unique:posts|max:500"
         ]);
+
+        dd($validated);
+        
+        Post::create($validated);
 
         return redirect("/");
     }

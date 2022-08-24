@@ -13,10 +13,10 @@
 
     <div class="mx-auto h-screen">
     @yield ('content')
-    </div>
 
     <div>
         @include ("Layouts.footer")
+    </div>
     </div>
 </body>
 </html>
