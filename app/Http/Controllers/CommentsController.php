@@ -43,8 +43,11 @@ class CommentsController extends Controller
         // ]);
 
         // Calling the function add comment from the post.
+        $this->validate(request(),["body" => "required|max:255"]);
+
         
-        $post->addComment(request('body'));
+        // Calling the function add comment from the post.
+        $post->addComment(request("body"));
 
         return back();
     }

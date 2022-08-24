@@ -19,7 +19,7 @@
             <h1 class="font-semibold">Comments</h1>
             @if ($post->comments->count() > 0)
 
-            @foreach($post->comments as $comment)
+            @foreach($post->comments->latest()->get() as $comment)
             <h4 class="text-gray-600">{{$comment-> body}} | <span class="">{{$comment->created_at->diffForHumans()}}</span></h4>
             @endforeach
 
