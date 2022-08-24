@@ -41,3 +41,5 @@ Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
 Route::get('create', [App\Http\Controllers\PostsController::class, 'create']);
 Route::post('/posts', [App\Http\Controllers\PostsController::class, 'store']);
 Route::get('post/{post}', [App\Http\Controllers\PostsController::class, 'show']);
+
+Route::post('post/{post}/comments', [App\Http\Controllers\CommentsController::class, 'store']);

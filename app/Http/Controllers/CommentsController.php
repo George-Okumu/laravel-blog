@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
+use Illuminate\Auth\Events\Validated;
 
-class PostsController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,6 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts = Post::latest()->get();
-        return view("posts/allposts", compact("posts"));
     }
 
     /**
@@ -27,8 +27,6 @@ class PostsController extends Controller
     public function create()
     {
         //
-
-        return view("posts/create");
     }
 
     /**
@@ -37,23 +35,19 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Post $post)
     {
+        // Comment::create([
+        //     "body"=> request("body"),
+        //     "post_id"=> $post->id
+        // ]);
 
-        $validated = $request->validate([
-            "title" => "required|unique:posts|max:255",
-            "description" => "required",
-            "content" => "required|unique:posts|min:5"
-        ]);
-
-        // dd($validated);
+        // Calling the function add comment from the post.
         
-        Post::create($validated);
+        $post->addComment(request('body'));
 
-        return redirect("/");
+        return back();
     }
-
-
 
     /**
      * Display the specified resource.
@@ -61,10 +55,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
-        return view("posts/singlePost", compact("post"));
     }
 
     /**

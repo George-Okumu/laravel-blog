@@ -2,12 +2,16 @@
 
 @section ('content')
 <div class="flex justify-center mt-5 mb-6">
-    <div class="shadow shadow-2xl grid grid-cols-1 md:grid-cols-3">
+    <div class="shadow shadow-2xl grid grid-cols-1 md:grid-cols-3 gap-2">
         <div class="mx-4 p-8 md:border-r-2 md:border-green-700">
             <h1 class="font-semibold">More Task Description</h1>
-            <h4 class="text-blue-600">Title: {{ $post-> title}}</h4>
-            <p class="text-blue-600"> Description: {{ $post-> description }}</p>
-            <p class=""> {{ $post-> content }}</p>
+            <h4 class="text-gray-600">Title: {{ $post-> title}}</h4>
+            <p class="text-gray-600"> Description: {{ $post-> description }}</p>
+
+            <div class="overflow-y-auto h-64 mt-8 bg-gray-100">
+                <p> {{ $post-> content }}</p>
+            </div>
+
             <a class="float-right text-green-700 font-extrabold underline decoration-blue-700" href="/">Go Back</a>
         </div>
 
@@ -22,6 +26,11 @@
             @else
             <p>No comments available for this post.</p>
             @endif
+        </div>
+
+
+        <div class="pt-8 pb-8 mr-2 border-l-2 border-green-700 pl-8">
+            @include ("comments/create")
         </div>
 
     </div>
