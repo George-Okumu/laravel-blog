@@ -9,7 +9,8 @@ class SessionsController extends Controller
     // this prevents user from accessing login page when is logged in
      public function __construct()
     {
-        return $this->middleware('guest');
+        # except destroy means, if you are signed in, you can access destroy method
+        return $this->middleware('guest')->except('destroy');
     }
 
     public function create(){
