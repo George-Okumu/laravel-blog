@@ -32,14 +32,14 @@
             @foreach($posts as $post)
             <ul class="p-2 mx-4 group relative m-4 hover:bg-blue-700 hover:text-white">
                 <a class="" href="/post/{{$post->id}}">
-                    <li>{{$post ->title}} <span class="float-right font-bold text-white pt-2 mx-2">Posted on: {{$post ->created_at->toFormattedDateString()}}</span>
+                    <li>{{$post ->title}} <span class="float-right font-bold text-white pt-2 mx-2">Posted on: {{$post ->created_at->toFormattedDateString()}} <em class="text-green-700">By ~ {{$post->user->name}}</em></span>
                     </li>
                     <span class="absolute hidden group-hover:flex -top-2 -right-3 translate-x-full w-48 px-2 py-1 bg-blue-700 rounded-lg text-center text-white text-sm before:content-[''] before:absolute before:top-1/2  before:right-[100%] before:-translate-y-1/2 before:border-8 before:border-y-transparent before:border-l-transparent before:border-r-blue-700">click to view Details</span>
                 </a>
             </ul>
             @endforeach
         </div>
-        
+
     </div>
 </div>
 @endsection

@@ -41,4 +41,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+
+    // // Makes user responsible for publishing a post
+    // public function publish(Post $post){
+
+    //     # this is bcoz he relationship posts method.
+    //     # calling posts relationship on this(this user)
+    //     $this->posts()->save($post);
+    // }
+    // public function comments(){
+    //     $this->hasMany(Comment::class);
+    // }
 }

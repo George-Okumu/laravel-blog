@@ -7,6 +7,12 @@ use App\Models\Post;
 
 class PostsController extends Controller
 {
+
+
+    public function __construct()
+    {
+        return $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,15 +46,21 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
+         $request->validate([
             "title" => "required|unique:posts|max:255",
             "description" => "required",
-            "content" => "required|unique:posts|min:5"
+            "content" => "required|min:5"
         ]);
 
+
         // dd($validated);
-        
-        Post::create($validated);
+
+        Post::create([
+            "title" => $request->title,
+            "description" => $request->description,
+            "content" => $request->content,
+            "user_id" => auth()->id()
+        ]);
 
         return redirect("/");
     }

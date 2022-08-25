@@ -13,6 +13,10 @@ class Post extends Model
 
     protected $guarded = []; # this does not prevent mass assignment
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function comments(){
         return $this->hasMany(Comment::class);
     }
@@ -20,6 +24,6 @@ class Post extends Model
     # Post is responsible for adding its own comment.
     public function addComment($body){
         #set also the id of the post associated to this comment
-        $this->comments()->create(compact('body'));
+        return $this->comments()->create(compact('body'));
     }
 }
