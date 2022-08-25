@@ -4,7 +4,7 @@
 
 @section ('content')
 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-    @if (Route::has('login'))
+    <!-- @if (Route::has('login'))
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         @auth
         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
@@ -16,7 +16,7 @@
         @endif
         @endauth
     </div>
-    @endif
+    @endif -->
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
@@ -29,15 +29,20 @@
         </div>
         <div class="bg-cyan-500 shadow-lg rounded-lg shadow-cyan-500/50 m-4">
             <h2 class="text-center text-white pt-4 font-extrabold">All Posts</h2>
+
+            @if($posts->count() > 0)
             @foreach($posts as $post)
             <ul class="p-2 mx-4 group relative m-4 hover:bg-blue-700 hover:text-white">
                 <a class="" href="/post/{{$post->id}}">
-                    <li>{{$post ->title}} <span class="float-right font-bold text-white pt-2 mx-2">Posted on: {{$post ->created_at->toFormattedDateString()}} <em class="text-green-700">By ~ {{$post->user->name}}</em></span>
+                    <li>{{$post ->title}} <span class="float-right font-bold text-white pt-2 mx-2">Posted on: {{$post ->created_at->toFormattedDateString()}} <em class="text-green-700">By ~ {{$post->user->name ?? "Anonymous"}}</em></span>
                     </li>
                     <span class="absolute hidden group-hover:flex -top-2 -right-3 translate-x-full w-48 px-2 py-1 bg-blue-700 rounded-lg text-center text-white text-sm before:content-[''] before:absolute before:top-1/2  before:right-[100%] before:-translate-y-1/2 before:border-8 before:border-y-transparent before:border-l-transparent before:border-r-blue-700">click to view Details</span>
                 </a>
             </ul>
             @endforeach
+            @else
+            <p class="px-4 text-black">No blogs available <br><em>Please click <strong class="text-blue-600"><a href="/create/posts">create blog</a></strong>, to add a blog.</em></p>
+            @endif
         </div>
 
     </div>

@@ -17,12 +17,14 @@ class SessionsController extends Controller
         return view("auth/login");
     }
 
-    public function store(Request $request)
+    public function store()
     {
         // authenticate user here
 
-        if(!auth()->attempt([$request])){
-            return back();
+        if(!auth()->attempt(request(['email', 'password']))){
+            return back()->withErrors([
+                'message'=>'Please input a valid email or password.'
+            ]);
         }
 
         // sign them in
