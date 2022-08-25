@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
+    // this prevents user from accessing login page when is logged in
      public function __construct()
     {
         return $this->middleware('guest');
