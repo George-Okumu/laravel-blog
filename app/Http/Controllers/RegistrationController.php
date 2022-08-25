@@ -9,6 +9,11 @@ class RegistrationController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        return $this->middleware('guest');
+    }
+
     public function create()
     {
         return view("auth/register");
