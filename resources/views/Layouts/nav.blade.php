@@ -55,10 +55,13 @@
           @if (Auth::check())
           <p>{{ Auth::user()->name}}</p>
           @else
-         <a href="/login">Login</a>
+          <a href="/login">Login</a>
           @endif
         </div>
 
+        @auth
+        <a href="/logout" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Log Out</a>
+        @endauth
         <!-- Profile dropdown -->
         <div class="ml-3 relative hidden">
           <div>
