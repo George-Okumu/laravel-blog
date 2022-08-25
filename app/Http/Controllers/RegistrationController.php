@@ -34,6 +34,6 @@ class RegistrationController extends Controller
 
         //redirect them
 
-        return redirect('/');
+        return redirect('/home');
     }
 }

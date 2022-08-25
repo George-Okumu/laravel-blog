@@ -12,7 +12,7 @@
                 <p> {{ $post-> content }}</p>
             </div>
 
-            <a class="float-right text-green-700 font-extrabold underline decoration-blue-700" href="/">Go Back</a>
+            <a class="float-right text-green-700 font-extrabold underline decoration-blue-700" href="/home">Go Back</a>
         </div>
 
         <div class="mx-4 md:mx-0 pt-6 pb-8">

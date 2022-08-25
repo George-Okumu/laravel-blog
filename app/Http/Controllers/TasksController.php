@@ -8,11 +8,11 @@ use App\Models\Task;
 class TasksController extends Controller
 {
     //
-    public function index()
-    {
-        $tasks = Task::all();
-        return view('tasks/allTasks', compact('tasks'));
-    }
+    // public function index()
+    // {
+    //     $tasks = Task::all();
+    //     return view('tasks/allTasks', compact('tasks'));
+    // }
 
     public function show(Task $task)
     {

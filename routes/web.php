@@ -36,8 +36,8 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route::get('task/{task}', [App\Http\Controllers\TasksController::class, 'show']);
-Route::get('/', [App\Http\Controllers\TasksController::class, 'index']);
-Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
+// Route::get('/home', [App\Http\Controllers\TasksController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\PostsController::class, 'index'])->name('home');
 Route::get('create/posts', [App\Http\Controllers\PostsController::class, 'create']);
 Route::post('/posts', [App\Http\Controllers\PostsController::class, 'store']);
 Route::get('post/{post}', [App\Http\Controllers\PostsController::class, 'show']);
